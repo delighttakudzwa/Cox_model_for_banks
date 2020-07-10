@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Dashboard</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+      <h1>Cox Model Results</h1>
+    </div>
+    <div class="row h-100 justify-content-center align-items-center">
+      <a href="{{ url_for('predict_new_bank')}}" style="margin: 5%;">Predict New Bank</a>
+    </div style="margin: 5%;">
+        <table class="table table-hover" id="table">
+            <thead>
+              <tr>
+                <th scope="col">Bank</th>
+                <th scope="col">Hazard Ratio</th>
+                <th scope="col">Status</th>
+                <th scope="col">Survival Time</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for bank in banks %}
+              <tr>
+                <td>{{ bank[0] }}</td>
+                <td>{{ bank[1] }}</td>
+                <td>@mdo</td>
+                <td>{{ bank[2] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>    
+</div>
+
+<script>
+  let table = document.getElementById("table");
+
+  for(let i = 1; i < table.rows.length ; i++){
+      
+      let val = table.rows[i].cells[1].firstChild.textContent;
+      let survival_time = table.rows[i].cells[3].firstChild.textContent;
+      survival_time = parseInt(survival_time);
+
+      let status = table.rows[i].cells[2].firstChild;
+
+      switch(true){
+        case (survival_time <= 1):
+          status.textContent = "Failed";
+          table.rows[i].style.backgroundColor = "#FF3933";
+          break;
+        case (survival_time < 20):
+          status.textContent = "weak";
+          table.rows[i].style.backgroundColor = "#C6CDC1";
+          break;
+        case (survival_time < 25):
+          status.textContent = "stable";
+          table.rows[i].style.backgroundColor = "#36FF33";
+          break;
+        case (survival_time >= 25):
+          status.textContent = "Strong";
+          table.rows[i].style.backgroundColor = "#008000";
+          break;
+        default:
+          status.textContent = "-"
+          table.rows[i].style.backgroundColor = "#808080";
+          break;
+      }
+    }
+</script>
+{% endblock %}

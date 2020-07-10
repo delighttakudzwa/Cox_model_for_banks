@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Dashboard</title>
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <h1>Cox Model</h1>
+    </div>
+    <div class="row h-100 justify-content-center align-items-center">
+        <h3>Prediction for new bank</h3>
+    </div>
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-6">
+            <form action="{{ url_for('predict_new_bank')}}" method="POST">
+                <div class="form-group" style="margin-top: 5%;">
+                    <label for="total_deposits_to_total_assets">Total Deposits to Total Assets</label>
+                    <input type="number" class="form-control" name="total_deposits_to_total_assets" id="total_deposits_to_total_assets">
+
+                    <label for="total_loan_and_advance_to_total_assets">Total Loan & Advance Total Assets</label>
+                    <input type="number" class="form-control" name="total_loan_and_advance_to_total_assets" id="total_loan_and_advance_to_total_assets">
+
+                    <label for="cons_net_income_to_average_total_assests">Cons Net Income to Average Total Assets</label>
+                    <input type="number" class="form-control" name="cons_net_income_to_average_total_assests" id="cons_net_income_to_average_total_assests">
+
+                    <label for="operating_expenses_to_total_assets">Operating Expenses to Total Assets</label>
+                    <input type="number" class="form-control" name="operating_expenses_to_total_assets" id="operating_expenses_to_total_assets">
+
+                    <label for="NPL_to_average_total_assets">NPL to Average Total Assets</label>
+                    <input type="number" class="form-control" name="NPL_to_average_total_assets" id="NPL_to_average_total_assets">
+
+                    <label for="NPL_to_total_loan_and_lease">NPL to Total Load and Lease</label>
+                    <input type="number" class="form-control" name="NPL_to_total_loan_and_lease" id="NPL_to_total_loan_and_lease">
+
+                    <label for="total_loans_and_advance_to_total_deposits">Total Loans and Advance to Total Deposits</label>
+                    <input type="number" class="form-control" name="total_loans_and_advance_to_total_deposits" id="total_loans_and_advance_to_total_deposits">
+
+                    <input style="margin-top: 5%;" type="submit" class="btn btn-primary" name="submit" id="submit" value="Predict">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            Results
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Dashboard</title>
+{% endblock %}
+
+
+{% block body %}
+
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <h1>Cox Model</h1>
+    </div>
+    <div class="row h-100 justify-content-center align-items-center">
+        
+        <form action="{{ url_for('browse')}}" method="POST" enctype = "multipart/form-data">
+            <input style="margin: 5%;" class="btn btn-primary" type="file" name="excel_file" value=""><br>
+            <input style="margin: 5%;" class="form-control btn btn-primary" type="submit" name="submit" id="Submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

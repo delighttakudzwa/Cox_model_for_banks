@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block head %} 
+<title>Dashboard</title>
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+     
+    <div class="container my-3">  
+        <div class="row">    
+            <div class="col-sm-6 col-md-4 pb-3">  
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header">BANK STATUS</div>
+                    <div class="card-body">
+                      <h5 class="card-title">Cox Model</h5>
+                      <p class="card-text">Click the button below to go and uplaod the data to be processed by the model, you will have to browse to the location of the document to be analysed</p>
+                      <a href="{{ url_for('view_excel') }}" class="btn btn-danger">Continue</a>                  
+                    </div>
+                  </div>
+            </div>
+              
+            <div class="col-sm-6 col-md-4 pb-3">  
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header">RANKING</div>
+                    <class class="card-body">
+                      <h5 class="card-title">Camels Ranking</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-danger">View</a>                  
+                    </class>
+                </div>
+            </div>  
+              
+            <div class="col-sm-6 col-md-4 pb-3">  
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header">USERS</div>
+                    <div class="card-body">
+                      <h5 class="card-title">Sign Up Users</h5>
+                      <p class="card-text">If you want to create other users who are capable of working with the system, go ahead by clicking the button below</p>
+                      <a href="{{ url_for('signup')}}" class="btn btn-danger">Create User</a>                  
+                    </div>
+            </div> 
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+
+{% endblock %}
